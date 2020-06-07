@@ -4,10 +4,18 @@
 
 
   <script>
-    const name = 'coucou'
-
+    const name = 'couc'
+    import api from '../data/api.js'
+    
     export default {
-      title: `Hello ${ name }!`
+      title: `Hello ${ name }!`,
+      onMounted(props, state) {
+        console.log('HELLO')
+        this.getData();
+      },
+      getData(){
+        console.log(api.getAllRoutes())
+      }
     }
   </script>
 

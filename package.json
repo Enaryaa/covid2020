@@ -11,8 +11,12 @@
   },
   "devDependencies": {
     "@riotjs/cli": "^4.0.3",
-    "@riotjs/compiler": "^4.8.5",
-    "serve": "^11.3.1"
+    "@riotjs/compiler": "^4.9.1",
+    "serve": "^11.3.2"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "babel": "^6.23.0"
+  }
 }
