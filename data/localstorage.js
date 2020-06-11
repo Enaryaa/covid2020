@@ -1,11 +1,6 @@
-import localStorageDB from 'localstoragedb';
-import axios from 'axios';
-import "core-js/stable";
-import "regenerator-runtime/runtime";
-
 var lib = new localStorageDB("library", localStorage);
 
-export async function initDB(){
+async function initDB(){
     let {data} = await axios.get("https://api.covid19api.com/summary");
     lib.createTableWithData("pays", data.Countries);
     lib.insert("pays",data.Global);
@@ -27,7 +22,7 @@ async function updateAllCountries(){
     let {data} = await axios.get("https://api.covid19api.com/summary");
     lib.insert("pays",data);
 }
-export async function getCountries(){
+async function getCountries(){
     //query localstorage
     if(lib.tableExists("pays") == false){
         await initDB();

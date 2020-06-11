@@ -1,8 +1,23 @@
 <home>
+  <router >
+
+    <!-- These links will trigger automatically HTML5 history events -->
+    <nav class=" navbar-dark bg-dark">
+     
+       <ul class="nav justify-content-center ">
+      <li class="nav-item active">
+        <a class="navbar-brand " href="/#hello">Accueil</a>
+      </li>
+      <li class="nav-item">
+        <a class="navbar-brand" href="/#table">Choix de pays</a>
+      </li>
+    </ul>
+    </nav>
   <h3>{ props.title }</h3>
   {state.pays}
   <Table></Table>
-  
+
+  </router>
   <script>
     import axios from 'axios';
     import {getCountries} from '../data/localstorage.js';
@@ -10,7 +25,8 @@
 
     export default {
       components:{
-        Table
+        Table,
+        router: route.Router
       },
       async onMounted(){
           this.state = {
