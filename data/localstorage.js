@@ -1,12 +1,12 @@
 var lib = new localStorageDB("library", localStorage);
 
-async function initDB(){
+export async function initDB(){
     let {data} = await axios.get("https://api.covid19api.com/summary");
     lib.createTableWithData("pays", data.Countries);
     lib.insert("pays",data.Global);
     lib.commit();
 }
-function checkDate(date){
+export function checkDate(date){
     let dataDate = new Date(date);
     let currentDate = new Date();
     const milliseconds = Math.abs(dataDate - currentDate);
@@ -17,12 +17,12 @@ function checkDate(date){
         return false;
     return true;
 }
-async function updateAllCountries(){
+export async function updateAllCountries(){
     lib.deleteRows("pays");
     let {data} = await axios.get("https://api.covid19api.com/summary");
     lib.insert("pays",data);
 }
-async function getCountries(){
+export async function getCountries(){
     //query localstorage
     if(lib.tableExists("pays") == false){
         await initDB();
