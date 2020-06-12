@@ -29,28 +29,38 @@
   
   <script>
     import axios from 'axios';
-    import * as riot from 'riot'
     import {getCountries} from '../data/localstorage.js';
     import Message from './message.riot'
-    import Tables from './tables.riot'
-    
-     	
+    import Tables from './tables.riot'    
+   
     export default {
     components: {
-          Message,
-          Tables
-
-        },
+       Message,
+       Tables
+       
+       
     
-       onBeforeMounted(props){
-             new Promise((resolve) => { 
-               this.update({
-                pays:  getCountries()
-              })})
-       }
-      }
-       
-       
+        },
+    state: {
+      "pays":null,
+      "test": 0,
+    },
+    
+       _monEvent(e){
+         e.preventDefault();
+            this.update
+            (
+                {
+                  "test": 1,
+                }
+            );
+                console.log(this.state.test)
+            
+                this.state.pays= getCountries()
+                console.log("pays :" +this.state.pays)
+              }
+    }
+      
     
   </script>
 </home>

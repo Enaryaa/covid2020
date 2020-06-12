@@ -36,6 +36,7 @@ export async function getCountries(){
    
     //6h old data ?
     if(checkDate(pays[0].Date)){
+        console.log(pays)
         return pays;
     }
     //update data

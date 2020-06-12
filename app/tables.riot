@@ -1,14 +1,16 @@
 <tables>
-   <table class="table">
+<input type="text" id="search" onKeyUp="myFunction()" placeholder="Recherche Pays">
+
+   <table class="table"   data-toggle="table" id="pays">
     <thead>
       <tr>
-        <th scope="col">Pays</th>
-        <th scope="col">Cas</th>
-        <th scope="col">Guéris</th>
-        <th scope="col">Morts</th>
-        <th scope="col">Cas total</th>
-        <th scope="col">Guéris total</th>
-        <th scope="col">Morts total</th>
+        <th scope="col" data-sortable="true">Pays</th>
+        <th scope="col" data-sortable="true">Cas</th>
+        <th scope="col" data-sortable="true">Guéris</th>
+        <th scope="col" data-sortable="true">Morts</th>
+        <th scope="col" data-sortable="true">Cas total</th>
+        <th scope="col" data-sortable="true">Guéris total</th>
+        <th scope="col" data-sortable="true">Morts total</th>
       </tr>
     </thead>
     <tbody>
@@ -21,6 +23,8 @@
 
   <script>
 
+  
+
     export default {
       aDate: {
         country:"Afghanistan",
@@ -29,7 +33,7 @@
         "NewDeaths":21,
         "TotalConfirmed":22142,
         "TotalRecovered":3013,
-        "TotalDeaths":405,
+        "TotalDeaths":405
       },
       
       async onMounted(){
