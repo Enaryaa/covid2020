@@ -16,30 +16,23 @@ function checkDate(date){
     let currentDate = new Date();
     const milliseconds = Math.abs(dataDate - currentDate);
     const hours = milliseconds / 36e5;
-    console.log(hours);
-
     if(hours >= 6.0)
         return false;
     return true;
-}
-async function updateAllCountries(){
-    lib.deleteRows("pays");
-    let {data} = await axios.get("https://api.covid19api.com/summary");
-    lib.insert("pays",data);
 }
 export async function getCountries(){
     //query localstorage
     if(lib.tableExists("pays") == false){
         await initDB();
     }
-    let pays = lib.queryAll("pays");
-   
     //6h old data ?
+    let pays = lib.queryAll("pays");
     if(checkDate(pays[0].Date)){
         return pays;
     }
     //update data
     else{
-        await updateAllCountries();
+        lib.dropTable("pays");
+        initDB();
     }
 }
