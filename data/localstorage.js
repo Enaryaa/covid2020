@@ -33,6 +33,7 @@ export async function getCountries(){
         await initDB();
     }
     let pays = lib.queryAll("pays");
+   
     //6h old data ?
     if(checkDate(pays[0].Date)){
         return pays;
