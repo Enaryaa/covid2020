@@ -12,30 +12,27 @@
       </tr>
     </thead>
     <tbody>
-      <tr each={i in props.data}> 
-        <td><a href="#">{i['Country'] ? i['Country'] : '. . .' }</a></td>
-
-        <td>{i['NewConfirmed'] ? i['NewConfirmed'] : '. . .'}</td>
-
-        <td>{i['NewDeaths'] ? i['NewDeaths'] : '. . .'}</td>
-
-        <td>{i['NewRecovered'] ? i['NewRecovered'] : '. . .'}</td>
-
-        <td>{i['TotalConfirmed'] ? i['TotalConfirmed']: '. . .'}</td>
-
-        <td>{i['TotalRecovered'] ? i['TotalRecovered']: '. . .'}</td>
-
-        <td>{i['TotalDeaths'] ? i['TotalDeaths']: '. . .'}</td>
+      <tr each={ value in Object.values(aDate)} > 
+        <td> { value }   </td>
       </tr>
     </tbody>
   </table>
 
   <script>
-   
 
     export default {
+      aDate: {
+        "Country":"Afghanistan",
+        "NewConfirmed":683,
+        "TotalConfirmed":22142,
+        "NewDeaths":21,
+        "TotalDeaths":405,
+        "NewRecovered":362,
+        "TotalRecovered":3013
+      },
       
       async onMounted(){
+       
       }
     }
   </script>
