@@ -2,6 +2,7 @@ import '@riotjs/hot-reload'
 import {component} from 'riot'
 import Home from './home.riot'
 
-component(Home)(document.getElementById('app'), {
 
+component(Home)(document.getElementById('app'), {
+   
 })

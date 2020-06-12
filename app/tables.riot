@@ -13,7 +13,8 @@
     </thead>
     <tbody>
       <tr each={ value in Object.values(aDate)} > 
-        <td> { value }   </td>
+        <td > { value }   </td>
+       
       </tr>
     </tbody>
   </table>
@@ -22,13 +23,13 @@
 
     export default {
       aDate: {
-        "Country":"Afghanistan",
+        country:"Afghanistan",
         "NewConfirmed":683,
-        "TotalConfirmed":22142,
-        "NewDeaths":21,
-        "TotalDeaths":405,
         "NewRecovered":362,
-        "TotalRecovered":3013
+        "NewDeaths":21,
+        "TotalConfirmed":22142,
+        "TotalRecovered":3013,
+        "TotalDeaths":405,
       },
       
       async onMounted(){

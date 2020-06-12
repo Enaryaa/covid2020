@@ -29,23 +29,28 @@
   
   <script>
     import axios from 'axios';
+    import * as riot from 'riot'
     import {getCountries} from '../data/localstorage.js';
-     import Message from './message.riot'
-     import Tables from './tables.riot'
-
+    import Message from './message.riot'
+    import Tables from './tables.riot'
+    
      	
     export default {
-   components: {
-        Message,
-        Tables
-      },
-      
+    components: {
+          Message,
+          Tables
+
+        },
     
-        async onMounted(){
-            this.state = {
-            pays: await getCountries(),
-          }
-        }
-    }
+       onBeforeMounted(props){
+             new Promise((resolve) => { 
+               this.update({
+                pays:  getCountries()
+              })})
+       }
+      }
+       
+       
+    
   </script>
 </home>
