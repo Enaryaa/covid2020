@@ -44,8 +44,12 @@
     async onMounted(){
         this.state = {
         pays: await getCountries(),
-        france: await getCountry("france")
+        single: await getCountry("france")
       }
+      
+      console.log(this.state.pays)
+      console.log(this.state.single)
+      
       //chart.js
       var ctx = document.getElementById('myChart').getContext('2d');
       var myChart = new Chart(ctx, {

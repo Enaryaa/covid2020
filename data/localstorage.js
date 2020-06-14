@@ -30,16 +30,12 @@ export async function getCountries(){
 }
 export async function initDBUnPays(){
     let unpays = [];
-    let pays = lib.queryAll("pays");
-
-    for(const element of pays){
-        try{
-            let {data} = await axios.get("https://api.covid19api.com/total/dayone/country/"+element.Country);
-            for(const jour of data){
-                unpays.push(jour);
-            }
-        }catch(e){
+    try{
+        let {data} = await axios.get("https://api.covid19api.com/total/dayone/country/"+"france");
+        for(const jour of data){
+            unpays.push(jour);
         }
+    }catch(e){
     }
     lib.createTableWithData("unpays", unpays);
     lib.commit();
@@ -49,16 +45,27 @@ export async function getCountry(country){
     if(lib.tableExists("unpays") == false){
         await initDBUnPays();
     }
+    //check if exists
+    let pays = lib.queryAll("unpays", {
+        query: {Country: country}});
     //6h old data ?
-    let pays = lib.queryAll("unpays");
-    if(checkDate(pays[0].Date)){
-        return pays;
+    if(pays[0]){
+        if(checkDate(pays[0].Date)){
+            return pays;
+        }
+        //update data
+        else{
+            //replace rows with new data
+            lib.deleteRows("unpays",{Country:country});
+            let {data} = await axios.get("https://api.covid19api.com/total/dayone/country/"+country);
+            lib.insert("unpays",data);
+        }
     }
-    //update data
     else{
-        lib.dropTable("unpays");
-        initDBUnPays();
+        let {data} = await axios.get("https://api.covid19api.com/total/dayone/country/"+country);
+        lib.insert("unpays",data);
     }
+    
 }
 function checkDate(date){
     let dataDate = new Date(date);
