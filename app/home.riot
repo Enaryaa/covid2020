@@ -3,7 +3,6 @@
 
     <!-- These links will trigger automatically HTML5 history events -->
     <nav class=" navbar-dark bg-dark">
-     
        <ul class="nav justify-content-center ">
       <li class="nav-item active">
         <a class="navbar-brand " href="/#hello">Accueil</a>
@@ -12,18 +11,20 @@
         <a class="navbar-brand" href="/#table">Choix de pays</a>
       </li>
     </ul>
-    <canvas id="myChart" width="400" height="400"></canvas>
+    
     </nav>
 
 
 
     <!-- Your application routes will be rendered here -->
-     <route path="/#hello">
-      <message ></message>
+    <route path="/#hello">
+    <message></message>
+    <graph></graph>
+    <tables></tables>
+    
     </route>
-    <route path="/#table">
-      <tables></tables>
-    </route>
+
+  
    
   </router>
   
@@ -31,61 +32,25 @@
     import axios from 'axios';
     import {getCountries} from '../data/localstorage.js';
     import {getCountry} from '../data/localstorage.js';
-     import Message from './message.riot'
-     import Tables from './tables.riot'
-     import Char from 'chart.js'
-
+    import Message from './message.riot'
+    import Tables from './tables.riot'
+    import Graph from './graph.riot'
      	
     export default {
-   components: {
-        Message,
-        Tables
+      components: {
+            Message,
+            Tables,
+            Graph
+          
       },
-    async onMounted(){
-        this.state = {
-        pays: await getCountries()/*,
-        france: await getCountry("france"),*/
-      }
-      //chart.js
-      var ctx = document.getElementById('myChart').getContext('2d');
-      var myChart = new Chart(ctx, {
-      type: 'line',
-      data: {
-          labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-          datasets: [{
-              label: '# of Votes',
-              data: [12, 19, 3, 5, 2, 3],
-              backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)',
-                  'rgba(75, 192, 192, 0.2)',
-                  'rgba(153, 102, 255, 0.2)',
-                  'rgba(255, 159, 64, 0.2)'
-              ],
-              borderColor: [
-                  'rgba(255, 99, 132, 1)',
-                  'rgba(54, 162, 235, 1)',
-                  'rgba(255, 206, 86, 1)',
-                  'rgba(75, 192, 192, 1)',
-                  'rgba(153, 102, 255, 1)',
-                  'rgba(255, 159, 64, 1)'
-              ],
-              borderWidth: 1
-          }]
-      },
-      options: {
-          scales: {
-              yAxes: [{
-                  ticks: {
-                      beginAtZero: true
-                  }
-              }]
+        async onMounted(){
+            this.state = {
+            pays: await getCountries()/*,
+            france: await getCountry("france"),*/
           }
-      }
-  });
-          }
-      }
+        
+        }
+    }
 
   </script>
 </home>

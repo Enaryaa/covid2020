@@ -5,22 +5,14 @@
 </div>
 <script>
  const moment = require('moment')
-
-$(document).ready(function(){
-  $("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#myTable tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
+ moment.locale('fr')
 
  
 export default{
   onMounted() {
     const date = ""
     this.update({
-        date : moment().format("MMM Do YY")
+        date : moment().format("Do MMM YYYY")
       })
   }
 }
