@@ -11,21 +11,13 @@
         <a class="navbar-brand" href="/#table">Choix de pays</a>
       </li>
     </ul>
-
     </nav>
-
-
-
     <!-- Your application routes will be rendered here -->
     <route path="/#hello">
     <message></message>
     <graph></graph>
     <tables></tables>
-
     </route>
-
-
-
   </router>
   
   <script>
@@ -35,20 +27,13 @@
      import Message from './message.riot'
      import Tables from './tables.riot'
      import Graph from './graph.riot'
-
      	
     export default {
       components: {
-            Message,
-            Tables,
-            Graph
-          },
-        async onMounted(){
-            this.state = {
-            pays: await getCountries(),
-          }
-          console.log(this.state.pays)
-        }
+        Message,
+        Tables,
+        Graph
       }
+    }
   </script>
 </home>
