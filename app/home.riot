@@ -15,24 +15,33 @@
     <!-- Your application routes will be rendered here -->
     <route path="/#hello">
     <message></message>
-    <graph></graph>
+    <ul>
+    <li>Cas : { state.name }</li>
+    <li>Mort : {state.name}</li>
+    <li>Guéris : {state.name}</li>
+    </ul>
+    <p>{state.name}</p>
     <tables></tables>
     </route>
   </router>
   
   <script>
     import axios from 'axios';
-    import {getCountries} from '../data/localstorage.js';
-    import {getCountry} from '../data/localstorage.js';
-     import Message from './message.riot'
-     import Tables from './tables.riot'
-     import Graph from './graph.riot'
+    import {getGlobalStats} from '../data/localstorage.js';
+    import Message from './message.riot'
+    import Tables from './tables.riot'
+    import Graph from './graph.riot'
      	
     export default {
       components: {
         Message,
         Tables,
         Graph
+      },
+      async onMounted() {
+        this.state.name = await getGlobalStats() 
+        this.update()
+        console.log(this.state.name)
       }
     }
   </script>
