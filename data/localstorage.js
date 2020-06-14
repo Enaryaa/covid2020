@@ -8,7 +8,6 @@ var lib = new localStorageDB("library", localStorage);
 export async function initDBCountries(){
     let {data} = await axios.get("https://api.covid19api.com/summary");
     lib.createTableWithData("pays", data.Countries);
-    lib.insert("pays",data.Global);
     lib.commit();
 }
 
@@ -27,6 +26,10 @@ export async function getCountries(){
         lib.dropTable("pays");
         initDBCountries();
     }
+}
+export async function getGlobalStats(){
+    let {data} = await axios.get("https://api.covid19api.com/summary"); 
+    return data['Global'];
 }
 export async function initDBUnPays(){
     let unpays = [];

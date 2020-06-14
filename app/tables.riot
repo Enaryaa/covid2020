@@ -1,4 +1,4 @@
-<table-comp>
+<tables>
 <input type="text" id="search" onKeyUp="tri()" placeholder="Recherche Pays">
   <table class="table"   data-toggle="table" id="pays">
   <thead>
@@ -29,9 +29,8 @@
     export default {
       async onMounted() {
         this.state.name = await getCountries()
-
         this.update();
       }
     }
   </script>
-</table-comp>
+</tables>

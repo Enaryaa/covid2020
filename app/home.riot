@@ -15,28 +15,25 @@
     <!-- Your application routes will be rendered here -->
 
     <message></message>
-    <graph></graph>
+    <stats></stats>
      <pays></pays>
     <tables></tables>
-    <stats></stats>
    
 
   </router>
   
   <script>
     import axios from 'axios';
-    import {getCountries} from '../data/localstorage.js';
-    import {getCountry} from '../data/localstorage.js';
-     import Message from './message.riot'
-     import Tables from './tables.riot'
-     import Graph from './graph.riot'
-     import Pays from './pays.riot'
-     import Stats from './stats.riot'
+    import {getGlobalStats} from '../data/localstorage.js';
+    import Message from './message.riot'
+    import Tables from './tables.riot'
+    import Stats from './stats.riot'
+    import Pays from './pays.riot'
      	
     export default {
       components: {
         Message,
-        Stats
+        Pays
       }
     }
   </script>
