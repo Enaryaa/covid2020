@@ -1,46 +1,35 @@
-<tables>
- <form class="form-inline my-2 my-lg-0">
-    <input class="form-control mr-sm-2" id="search" onKeyUp="tri()" placeholder="Recherche Pays">
-  </form>
-
-   <table class="table"   data-toggle="table" id="pays">
-    <thead>
-      <tr>
-        <th scope="col" data-sortable="true">Pays</th>
-        <th scope="col" data-sortable="true">Cas</th>
-        <th scope="col" data-sortable="true">Guéris</th>
-        <th scope="col" data-sortable="true">Morts</th>
-        <th scope="col" data-sortable="true">Cas total</th>
-        <th scope="col" data-sortable="true">Guéris total</th>
-        <th scope="col" data-sortable="true">Morts total</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr each={ value in Object.values(aDate)} > 
-        <td > { value }   </td>
-       
-      </tr>
-    </tbody>
-  </table>
-
+<table-comp>
+<input type="text" id="search" onKeyUp="tri()" placeholder="Recherche Pays">
+  <table class="table"   data-toggle="table" id="pays">
+  <thead>
+    <tr>
+      <th scope="col" data-sortable="true">Pays</th>
+      <th scope="col" data-sortable="true">Cas</th>
+      <th scope="col" data-sortable="true">Guéris</th>
+      <th scope="col" data-sortable="true">Morts</th>
+      <th scope="col" data-sortable="true">Cas total</th>
+      <th scope="col" data-sortable="true">Guéris total</th>
+      <th scope="col" data-sortable="true">Morts total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr each={pays in state.name}>
+      <td>{pays.Country}</td>
+      <td>{pays.NewConfirmed}</td>
+      <td>{pays.NewRecovered}</td>
+      <td>{pays.NewDeaths}</td>
+      <td>{pays.TotalConfirmed}</td>
+      <td>{pays.TotalRecovered}</td>
+      <td>{pays.TotalDeaths}</td>
+    </tr>
+  </tbody>
+</table>
   <script>
-
-  
-
+    import {getCountries} from '../data/localstorage.js';
     export default {
-      aDate: {
-        country:"Afghanistan",
-        "NewConfirmed":683,
-        "NewRecovered":362,
-        "NewDeaths":21,
-        "TotalConfirmed":22142,
-        "TotalRecovered":3013,
-        "TotalDeaths":405
-      },
-      
-      async onMounted(){
-       
+      async onMounted() {
+        this.state.name = await getCountries()
       }
     }
   </script>
-</tables>
+</table-comp>

@@ -1,5 +1,5 @@
 <home>
-   <router base="http://localhost:3000" >
+ <router >
 
     <!-- These links will trigger automatically HTML5 history events -->
     <nav class=" navbar-dark bg-dark">
@@ -11,49 +11,29 @@
         <a class="navbar-brand" href="/#table">Choix de pays</a>
       </li>
     </ul>
-    
     </nav>
-
-
-
     <!-- Your application routes will be rendered here -->
     <route path="/hello">
     <message></message>
     <graph></graph>
     <tables></tables>
-
     </route>
-
-  
-   
   </router>
   
   <script>
     import axios from 'axios';
     import {getCountries} from '../data/localstorage.js';
     import {getCountry} from '../data/localstorage.js';
-    import Message from './message.riot'
-    import Tables from './tables.riot'
-    import Graph from './graph.riot'
-    
- 
-  
+     import Message from './message.riot'
+     import Tables from './tables.riot'
+     import Graph from './graph.riot'
+     	
     export default {
-       
       components: {
-            Message,
-            Tables
-          
-          
-      },
-        async onMounted(){
-            this.state = {
-            pays: await getCountries()/*,
-            france: await getCountry("france"),*/
-          }
-        
-        }
+        Message,
+        Tables,
+        Graph
+      }
     }
-
   </script>
 </home>
