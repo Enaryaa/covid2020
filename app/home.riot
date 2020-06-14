@@ -3,7 +3,6 @@
 
     <!-- These links will trigger automatically HTML5 history events -->
     <nav class=" navbar-dark bg-dark">
-     
        <ul class="nav justify-content-center ">
       <li class="nav-item active">
         <a class="navbar-brand " href="/#hello">Accueil</a>
@@ -12,18 +11,20 @@
         <a class="navbar-brand" href="/#table">Choix de pays</a>
       </li>
     </ul>
-    <canvas id="myChart" width="400" height="400"></canvas>
+    
     </nav>
 
 
 
     <!-- Your application routes will be rendered here -->
-     <route path="/#hello">
-      <message ></message>
+    <route path="/#hello">
+    <message></message>
+    <graph></graph>
+    <tables></tables>
+    
     </route>
-    <route path="/#table">
-      <tables></tables>
-    </route>
+
+  
    
   </router>
   
@@ -31,12 +32,18 @@
     import axios from 'axios';
     import {getCountries} from '../data/localstorage.js';
     import {getCountry} from '../data/localstorage.js';
-     import Message from './message.riot'
-     import Tables from './tables.riot'
-     import Char from 'chart.js'
-
+    import Message from './message.riot'
+    import Tables from './tables.riot'
+    import Graph from './graph.riot'
      	
     export default {
+<<<<<<< HEAD
+      components: {
+            Message,
+            Tables,
+            Graph
+          
+=======
    components: {
         Message,
         Tables
@@ -77,19 +84,16 @@
               ],
               borderWidth: 1
           }]
+>>>>>>> f9dd2f77ac26e3d67a4d9eb06a3b2153234e7480
       },
-      options: {
-          scales: {
-              yAxes: [{
-                  ticks: {
-                      beginAtZero: true
-                  }
-              }]
+        async onMounted(){
+            this.state = {
+            pays: await getCountries()/*,
+            france: await getCountry("france"),*/
           }
-      }
-  });
-          }
-      }
+        
+        }
+    }
 
   </script>
 </home>
