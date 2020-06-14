@@ -29,7 +29,7 @@
     export default {
       async onMounted() {
         this.state.name = await getCountries()
-        console.log(this.state.name[0])
+
         this.update();
       }
     }

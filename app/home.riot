@@ -13,11 +13,14 @@
     </ul>
     </nav>
     <!-- Your application routes will be rendered here -->
-    <route path="/hello">
+
     <message></message>
     <graph></graph>
+     <pays></pays>
     <tables></tables>
-    </route>
+    <stats></stats>
+   
+
   </router>
   
   <script>
@@ -27,12 +30,13 @@
      import Message from './message.riot'
      import Tables from './tables.riot'
      import Graph from './graph.riot'
+     import Pays from './pays.riot'
+     import Stats from './stats.riot'
      	
     export default {
       components: {
         Message,
-        Tables,
-        Graph
+        Stats
       }
     }
   </script>
