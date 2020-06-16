@@ -3,22 +3,22 @@
     <nav class=" navbar-dark bg-dark">
        <ul class="nav justify-content-center ">
       <li class="nav-item active">
-        <a class="navbar-brand " href="/~hoeglund/#home">Accueil</a>
+        <a class="navbar-brand " href="/#home">Accueil</a>
       </li>
       <li class="nav-item">
-        <a class="navbar-brand" href="/~hoeglund/#table">Choix de pays</a>
+        <a class="navbar-brand" href="/#table">Choix de pays</a>
       </li>
     </ul>
     </nav>
 
-     <route path='/~hoeglund/#home'>
+     <route path='/#home'>
       <message/>
       <stats/>
     </route>
-    <route path='/~hoeglund/#table'>
+    <route path='/#table'>
       <tables/>
     </route>
-    <route path='/~hoeglund/pays/:country'>
+    <route path='/#table/pays/:country'>
       <pays pays={getCountryData(route)}/>
     </route>
   </router>
