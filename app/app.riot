@@ -3,22 +3,22 @@
     <nav class=" navbar-dark bg-dark">
        <ul class="nav justify-content-center ">
       <li class="nav-item active">
-        <a class="navbar-brand " href="~besnarda/covid19/#home">Accueil</a>
+        <a class="navbar-brand " href="/#home">Accueil</a>
       </li>
       <li class="nav-item">
-        <a class="navbar-brand" href="~besnarda/covid19/#table">Choix de pays</a>
+        <a class="navbar-brand" href="/#table">Choix de pays</a>
       </li>
     </ul>
     </nav>
 
-     <route path='~besnarda/covid19/#home'>
+     <route path='/#home'>
       <message/>
       <stats/>
     </route>
-    <route path='~besnarda/covid19/#table'>
+    <route path='/#table'>
       <tables/>
     </route>
-    <route path='~besnarda/covid19/#table/pays/:slug'>
+    <route path='/#table/pays/:slug'>
       <pays pays={getCountryData(route)}/>
     </route>
   </router>
